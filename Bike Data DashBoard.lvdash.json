@@ -1,0 +1,182 @@
+{
+  "datasets": [
+    {
+      "name": "5a61b6af",
+      "displayName": "dim_customers",
+      "queryLines": [
+        "SELECT * FROM lakehouse.gold.dim_customers"
+      ]
+    },
+    {
+      "name": "0b7a00c2",
+      "displayName": "dim_customerss",
+      "queryLines": [
+        "SELECT * FROM lakehouse.gold.dim_customerss"
+      ]
+    },
+    {
+      "name": "2175d538",
+      "displayName": "dim_productss",
+      "queryLines": [
+        "SELECT * FROM lakehouse.gold.dim_productss"
+      ]
+    },
+    {
+      "name": "981d5ae8",
+      "displayName": "fact_saless",
+      "queryLines": [
+        "SELECT * FROM lakehouse.gold.fact_saless"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "28d37da2",
+      "displayName": "Sales",
+      "layout": [
+        {
+          "widget": {
+            "name": "total-orders",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "981d5ae8",
+                  "fields": [
+                    {
+                      "name": "count(sls_ord_num)",
+                      "expression": "COUNT(`sls_ord_num`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "count(sls_ord_num)",
+                  "style": {
+                    "bold": true
+                  }
+                }
+              },
+              "frame": {
+                "title": "Total Orders",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "da8b1895",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "981d5ae8",
+                  "fields": [
+                    {
+                      "name": "sum(sls_sales)",
+                      "expression": "SUM(`sls_sales`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(sls_sales)",
+                  "style": {
+                    "bold": true
+                  },
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "USD",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  }
+                }
+              },
+              "frame": {
+                "title": "Total Sales",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "bd4eab60",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "981d5ae8",
+                  "fields": [
+                    {
+                      "name": "count(sls_ord_num)",
+                      "expression": "COUNT(`sls_ord_num`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "count(sls_ord_num)",
+                  "style": {
+                    "bold": true
+                  }
+                }
+              },
+              "frame": {
+                "title": "Total Orders",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
